@@ -1,0 +1,45 @@
+#include stdio.h
+#include ctype.h
+
+int myatoi(char *s);
+
+void main(void){
+
+ int n;
+ char cad[50];
+  clrscr();
+
+  printf("Introduce la cadena: ");
+  gets(cad);
+  n=myatoi(cad);
+   printf("\nEl entero extraido de la cadena fue %d",n);
+    getch();
+}
+
+ int myatoi(char *s){
+  int signo=1,num=0;
+
+   while(1){
+    if(*s==' ' || *s=='\t'){
+     s++;
+   }
+     else break;
+   }
+     if(*s=='+'){
+     s++;
+    }
+      else if(*s=='-'){
+       signo=-1;
+	s++;
+      }
+       while(1){
+	 if(*s=='\0' || !isdigit(*s)){
+	 break;
+       }
+	   num=10*num+(*s-'0');
+	   s++;
+     }
+	    return signo*num;
+ }
+
+
